@@ -1,0 +1,1 @@
+enum SurveyAnswer { yes, no }

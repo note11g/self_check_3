@@ -1,0 +1,58 @@
+name: self_check_3
+description: self_check_2021
+
+publish_to: 'none'
+
+version: 2.0.0-beta1+13
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get: ^4.6.1
+  webview_flutter: ^3.0.1
+  flutter_secure_storage: ^5.0.2
+  easy_localization: ^3.0.0
+  package_info_plus: ^1.4.0
+  url_launcher: ^6.0.20
+  firebase_core: ^1.13.1
+  firebase_crashlytics: ^2.5.3
+  firebase_messaging: ^11.2.8
+  flutter_svg: ^1.0.3
+  alert: ^2.0.1
+  dio: ^4.0.4
+  flutter_widget_from_html: ^0.8.5
+  connectivity_plus: ^2.2.1
+  in_app_update: ^3.0.0
+  path_provider: ^2.0.9
+
+  shared_preferences: ^2.0.13
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/translations/
+    - assets/image/
+
+  fonts:
+    - family: spoqa
+      fonts:
+        - asset: assets/fonts/SpoqaHanSansNeo-Thin.ttf
+          weight: 200
+        - asset: assets/fonts/SpoqaHanSansNeo-Light.ttf
+          weight: 300
+        - asset: assets/fonts/SpoqaHanSansNeo-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/SpoqaHanSansNeo-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/SpoqaHanSansNeo-Bold.ttf
+          weight: 700
