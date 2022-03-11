@@ -23,7 +23,11 @@ class WebviewController extends GetxController {
     if (pw == null) {
       Get.offAllNamed(Routes.welcome);
     } else {
-      Get.toNamed(Routes.main);
+      if (Platform.isAndroid) {
+        Get.toNamed(Routes.main);
+      } else {
+        _hideWebview();
+      }
       ever(rejectBy3m, (int v) {
         if (v != -1) {
           Future.delayed(
@@ -47,10 +51,14 @@ class WebviewController extends GetxController {
     await _webViewController.runJavascript(JsQuery.changeAlertForSnackbar);
     switch (url) {
       case Links.reLoginUrl:
+        _showWebview();
         _webViewController.runJavascript(JsQuery.checkKeypadOpened);
+        _hideWebview();
         break;
       case Links.mainUrl:
+        _showWebview();
         _webViewController.runJavascript(JsQuery.checkMainPageLoaded);
+        _hideWebview();
         break;
       case Links.surveyUrl:
         _webViewController.runJavascript(JsQuery.checkSurveyLoaded);
@@ -59,7 +67,13 @@ class WebviewController extends GetxController {
   }
 
   onMainPageLoaded() async {
+    _showWebview();
     await _webViewController.runJavascript(JsQuery.clickFirstPerson); // 첫번째 클릭
+    if (Platform.isIOS) {
+      Future.delayed(const Duration(milliseconds: 100),
+          () => _webViewController.runJavascript(JsQuery.checkSurveyLoaded));
+      Get.toNamed(Routes.main);
+    }
   }
 
   onSurveyLoaded() async {
@@ -116,5 +130,17 @@ class WebviewController extends GetxController {
     final CookieManager cookieManager = CookieManager();
     await cookieManager.clearCookies();
     await _webViewController.clearCache();
+  }
+
+  void _hideWebview() {
+    if (Platform.isIOS) {
+      Get.toNamed(Routes.loading);
+    }
+  }
+
+  void _showWebview() {
+    if (Platform.isIOS) {
+      Get.back();
+    }
   }
 }

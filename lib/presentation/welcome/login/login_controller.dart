@@ -12,8 +12,8 @@ class LoginController extends GetxController {
     _webViewController = controller;
   }
 
-  onPageFinished(String url) async {
-    print(url);
+  Future onPageFinished(String url) async {
+    print("[onPageFinished] $url");
     await _webViewController.runJavascript(JsQuery.changeAlertForSnackbar);
     if (url == Links.mainUrl) goNextPage();
   }

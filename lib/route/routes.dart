@@ -7,4 +7,6 @@ class Routes {
   static const setPassword = "/set_pw";
 
   static const setting = "/setting";
+
+  static const loading = "/loading";
 }

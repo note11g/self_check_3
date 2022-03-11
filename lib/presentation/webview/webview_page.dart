@@ -54,10 +54,6 @@ class WebviewPage extends GetView<WebviewController> {
                 ]),
                 onWebViewCreated: controller.onWebViewCreated,
                 onPageFinished: controller.onPageFinished,
-                navigationDelegate: (nr) {
-                  controller.onPageFinished(nr.url);
-                  return NavigationDecision.navigate;
-                },
                 onWebResourceError: (e) =>
                     Snack.show("네트워크가 연결되지 않았거나, 너무 느립니다.\n${e.description}"),
               ),

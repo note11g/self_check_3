@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:self_check_3/presentation/loading/ios_loading_page.dart';
 import 'package:self_check_3/presentation/main/main_controller.dart';
 import 'package:self_check_3/presentation/main/main_page.dart';
 import 'package:self_check_3/presentation/setting/setting_controller.dart';
@@ -45,5 +46,6 @@ class ApplicationPages {
         binding: BindingsBuilder(() {
           Get.lazyPut(() => SettingController());
         })),
+    GetPage(name: Routes.loading, page: () => const LoadingPage()),
   ];
 }
